@@ -1,0 +1,33 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# User specific aliases and functions
+
+# git
+GIT_PS1_SHOWDIRTYSTATE=true
+if [ -f ~/.git-completion.bash ]; then
+    . ~/.git-completion.bash
+fi
+
+if [ -f ~/.git-prompt.sh ]; then
+    . ~/.git-prompt.sh
+    export PS1="[\h \W]\$(__git_ps1 '[%s]')\\$ "
+else
+    export PS1="[\h \W]\\$ "
+fi
+
+alias mv='mv -i'
+alias rm='rm -i'
+alias cp='cp -i'
+alias ll='ls -la'
+ 
+alias ssh='ssh -2'
+alias sudo='sudo -E'
+
+# tmux
+alias tmux="LD_LIBRARY_PATH=$HOME/.local/lib $HOME/.local/bin/tmux"
+export PATH=$PATH:$HOME/.local/bin
